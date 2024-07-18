@@ -167,15 +167,14 @@ def _decode_region(decoder, region, corrections, shrink, return_vertices=False):
             dmtxMatrix3VMultiplyBy(p11, region.contents.fit2raw)
             dmtxMatrix3VMultiplyBy(p01, region.contents.fit2raw)
             dmtxMatrix3VMultiplyBy(p10, region.contents.fit2raw)
-            x00 = int((shrink * p00.X) + 0.5)
-            y00 = int((shrink * p00.Y) + 0.5)
-            x11 = int((shrink * p11.X) + 0.5)
-            y11 = int((shrink * p11.Y) + 0.5)
-            x10 = int((shrink * p10.X) + 0.5)
-            y10 = int((shrink * p10.Y) + 0.5)
-            x01 = int((shrink * p01.X) + 0.5)
-            y01 = int((shrink * p01.Y) + 0.5)
-
+            x00 = shrink * p00.X
+            y00 = shrink * p00.Y
+            x11 = shrink * p11.X
+            y11 = shrink * p11.Y
+            x10 = shrink * p10.X
+            y10 = shrink * p10.Y
+            x01 = shrink * p01.X
+            y01 = shrink * p01.Y
             if return_vertices:
                 return Decoded(
                     string_at(msg.contents.output),
